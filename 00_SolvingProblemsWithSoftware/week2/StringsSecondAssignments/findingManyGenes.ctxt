@@ -7,4 +7,6 @@ comment2.params=dna
 comment2.target=java.lang.String\ findGene(java.lang.String)
 comment3.params=
 comment3.target=void\ testFindStopCodon()
-numComments=4
+comment4.params=
+comment4.target=void\ testFindGene()
+numComments=5
