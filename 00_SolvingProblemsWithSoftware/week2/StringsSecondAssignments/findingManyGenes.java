@@ -7,54 +7,39 @@
  */
 public class findingManyGenes {
     
-    public int findStopCodon(String dna, int startIndex, String stopCodon){
-        
-//find first ATG in dna
-    String startCodon = "ATG";
-    int startCodonIndex = dna.indexOf(startCodon, startIndex);
-    
-//find first stopCodon
-    int endCodonIndex = dna.indexOf(stopCodon, startCodonIndex);
-    
-    int diffInCodons = endCodonIndex - startCodonIndex;
-    System.out.println("stop codon " + stopCodon);
-    System.out.println("diff in codons " + diffInCodons);
-    if(diffInCodons % 3 == 0){
-    return endCodonIndex;
-    }
-
-        
+    public int findStopCodon(String dna, int startIndex, String stopCodon) {
+        startIndex = dna.indexOf("ATG");
+        int currIndex = dna.indexOf(stopCodon, startIndex + 3);
+        while (currIndex != -1) {
+            int diff = (currIndex - startIndex) % 3;
+            if (diff == 0) {
+                return currIndex;
+            }
+            else {
+                currIndex = dna.indexOf(stopCodon, currIndex +1);
+            }
+        }
         return dna.length();
     }
+    
+
     //part 1 section 5
-    public String findGene(String dna){
+    public String findGene(String dna, int startIndex){
+        int atgCodon = dna.indexOf("ATG", startIndex);
         
-   
-        int indexATG = dna.indexOf("ATG");
-        if(indexATG == -1){
-            return "";
+        if (atgCodon == -1) {
+            return "NO ATG CODON FOUND";
         }
-        int indexTAA = findStopCodon(dna, indexATG, "TAA");
-        System.out.println("TAA string is: " + indexTAA);
-        int indexTAG = findStopCodon(dna, indexATG, "TAG");
-        System.out.println("TAG string is: " + indexTAG);
-        int indexTGA = findStopCodon(dna, indexATG, "TGA");
-        System.out.println("TGA string is: " + indexTGA);
-        
-        int temp = Math.min(indexTAA, indexTAG);
-        
-        int stopCodonMin = Math.min(temp, indexTGA);
-        
-        if(dna.length() == stopCodonMin){
-         return "";   
+        int taaCodon = findStopCodon(dna, atgCodon, "TAA");
+        int tagCodon = findStopCodon(dna, atgCodon, "TAG");
+        int tgaCodon = findStopCodon(dna, atgCodon, "TGA");
+        int tempCodon = Math.min(taaCodon, tagCodon);
+        int dnaFin = Math.min(tempCodon, tgaCodon);
+        if (dnaFin == dna.length()) {
+            return "NO GENE FOUND";
         }
-        
-        return dna.substring(indexATG, stopCodonMin);
-    
-        
-    
+        return dna.substring(atgCodon, dnaFin+3);
     }
-    
     public void testFindStopCodon(){
     
         String dna = "ATGATAAATGAATGAATG";
@@ -81,22 +66,52 @@ public class findingManyGenes {
         String dna = "ATGATAAATGAATGAATG";
         System.out.println("dna string is: " + dna);
         //should return ATGATAAATGAATGA
-        String geneResult = findGene(dna);
+        String geneResult = findGene(dna, 0);
         System.out.println("dna string is: " + dna);
         System.out.println("gene is: " + geneResult);
         
         dna = "ATGAAAATAGATGAATAGTAA";
         //should return ATGTGA
-        geneResult = findGene(dna);
+        geneResult = findGene(dna, 0);
         System.out.println("dna string is: " + dna);
         System.out.println("gene is: " + geneResult);
         
         dna = "TGATAGTAA";
         // should return ""
-        geneResult = findGene(dna);
+        geneResult =findGene(dna, 0);
         System.out.println("dna string is: " + dna);
         System.out.println("gene is: " + geneResult);
         
+         dna = "TGATAGTAA";
+        // should return ""
+        geneResult = findGene(dna, 0);
+        System.out.println("dna string is: " + dna);
+        System.out.println("gene is: " + geneResult);
+        
+        dna = "ATGATAAATGAATAAATG";
+        System.out.println("dna string is: " + dna);
+        //should return ATGATAAATGAATAA
+       geneResult = findGene(dna, 0);
+        System.out.println("dna string is: " + dna);
+        System.out.println("gene is: " + geneResult);
+        
+        
+    }
+    
+    
+    public void printAllGenes(){
+        String dna= "aaaaaaATGaaaaaaaaaTAGTTATGAaaa"; 
+        
+        int startIndex = 0;
+        while (true){
+            String currentGene = findGene(dna, startIndex);
+            if (currentGene.isEmpty()){
+                break;
+            }
+            System.out.println(currentGene);
+            startIndex = dna.indexOf(currentGene, startIndex) + 
+                         currentGene.length();
+        }
         
     }
     
