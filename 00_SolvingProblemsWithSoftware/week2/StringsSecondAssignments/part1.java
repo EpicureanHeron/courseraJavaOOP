@@ -5,10 +5,10 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class findingManyGenes {
+public class part1 {
     
     public int findStopCodon(String dna, int startIndex, String stopCodon) {
-        startIndex = dna.indexOf("ATG");
+        startIndex = dna.indexOf("ATG", startIndex);
         int currIndex = dna.indexOf(stopCodon, startIndex + 3);
         while (currIndex != -1) {
             int diff = (currIndex - startIndex) % 3;
@@ -28,7 +28,7 @@ public class findingManyGenes {
         int atgCodon = dna.indexOf("ATG", startIndex);
         
         if (atgCodon == -1) {
-            return "NO ATG CODON FOUND";
+            return "";
         }
         int taaCodon = findStopCodon(dna, atgCodon, "TAA");
         int tagCodon = findStopCodon(dna, atgCodon, "TAG");
@@ -36,8 +36,11 @@ public class findingManyGenes {
         int tempCodon = Math.min(taaCodon, tagCodon);
         int dnaFin = Math.min(tempCodon, tgaCodon);
         if (dnaFin == dna.length()) {
-            return "NO GENE FOUND";
+            return "";
         }
+        System.out.println("atg  is: " + atgCodon);
+        System.out.println("dnaFin  is: " + dnaFin);
+        System.out.println("gene  is: " + dna.substring(atgCodon, dnaFin+3));
         return dna.substring(atgCodon, dnaFin+3);
     }
     public void testFindStopCodon(){
@@ -100,10 +103,11 @@ public class findingManyGenes {
     
     
     public void printAllGenes(){
-        String dna= "aaaaaaATGaaaaaaaaaTAGTTATGAaaa"; 
+        String dna= "aaaaaaATGaaaaaaaaaTAGTTATGAaaaTAGaTAGaaTAGaaTAG"; 
         
         int startIndex = 0;
         while (true){
+            System.out.println("start index: " + startIndex);
             String currentGene = findGene(dna, startIndex);
             if (currentGene.isEmpty()){
                 break;
