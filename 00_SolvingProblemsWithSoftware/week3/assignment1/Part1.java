@@ -71,8 +71,8 @@ public class Part1 {
 
  public void testlistExportersTwoProducts(){
       CSVParser parser = tester();
-      String ex1 = "Gold";
-      String ex2 = "Diamond";
+      String ex1 = "cotton";
+      String ex2 = "flowers";
      listExportersTwoProducts(parser, ex1, ex2);
     
     }
@@ -100,7 +100,7 @@ public class Part1 {
 
 public void testNumberOfExporters(){
     CSVParser parser = tester();
-    String export = "Sugar";
+    String export = "cocoa";
     int results = numberOfExporters(parser,export);
     System.out.println(results);
 }
