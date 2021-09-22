@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=WordPlay
+comment0.text=\r\n\ Write\ a\ description\ of\ WordPlay\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=ch
+comment1.target=boolean\ isVowel(char)
+comment1.text=\ Write\ a\ method\ isVowel\ that\ has\ one\ Char\ parameter\ named\ ch.\ This\ method\ returns\ true\ \r\nif\ ch\ is\ a\ vowel\ (one\ of\ 'a',\ 'e',\ 'i',\ 'o',\ or\ 'u'\ or\ the\ uppercase\ versions)\ and\ false\ otherwise.\ \r\nYou\ should\ write\ a\ tester\ method\ to\ see\ if\ this\ method\ works\ correctly.\ For\ example,\ \r\nisVowel(\u2018F\u2019)\ should\ return\ false,\ and\ isVowel(\u2018a\u2019)\ should\ return\ true.
+numComments=2
