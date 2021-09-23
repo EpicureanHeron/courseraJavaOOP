@@ -29,22 +29,35 @@ public String encrypt(String input, int key){
     
     StringBuilder encrypted = new StringBuilder(input);
     
-    String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    String alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
-    String shiftAlpha = alphabet.substring(key) + alphabet.substring(0, key);
+    String shiftAlphaUpper = alphabetUpper.substring(key) + alphabetUpper.substring(0, key);
     
     for (int i = 0; i < encrypted.length(); i++) {
         char currChar = encrypted.charAt(i);
         
         char upperCurrChar = Character.toUpperCase(currChar);
         
-        int idx = alphabet.indexOf(upperCurrChar);
-        
+        int idx = alphabetUpper.indexOf(upperCurrChar);
+        //checks to see if value is in the alphabet string
         if(idx != -1){
-             char newChar = shiftAlpha.charAt(idx);
-             encrypted.setCharAt(i, newChar);
+            //then go ahead and select the shifted alphabet character
+             char newChar = shiftAlphaUpper.charAt(idx);
+             //if the original value is upper case
+             if(Character.isUpperCase(currChar)){
              
-        
+             //and add it to the encrypted message
+             encrypted.setCharAt(i, newChar);
+                }
+                //if not upper case (therefore lower case)
+             else{
+                 
+             //transform the character selected lowercase
+             char lowerNewChar = Character.toLowerCase(newChar);
+             //add the lower case to the encrypted message
+             encrypted.setCharAt(i, lowerNewChar);
+                }
+
         }
         else{
         
@@ -91,6 +104,19 @@ Modify the encrypt method to be able to handle both uppercase and lowercase lett
  * 
  */
 
+
+public void testModifiedEncrypt(){
+
+int key = 23;
+String encrypted = encrypt("First Legion", key);
+System.out.println("key is " + key + "\n" + encrypted);
+
+
+int key2 = 17;
+String encrypted2 = encrypt("First Legion", key2);
+System.out.println("key is " + key2 + "\n" + encrypted2);
+}
+
 /*
  * Write the method encryptTwoKeys that has three parameters, a String named input, 
  * and two integers named key1 and key2. This method returns a String that has been 
@@ -102,5 +128,79 @@ Modify the encrypt method to be able to handle both uppercase and lowercase lett
  * with 17, the ‘r’ with 23, and the ‘s’ with 17, etc. Be sure to test this method. 
  * 
  */
+
+public String encryptTwoKeys(String input, int key1, int key2){
+
+StringBuilder encrypted = new StringBuilder(input);
+    
+    String alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    
+    String shiftAlpha1 = alphabetUpper.substring(key1) + alphabetUpper.substring(0, key1);
+    String shiftAlpha2 = alphabetUpper.substring(key2) + alphabetUpper.substring(0, key2);
+    for (int i = 0; i < encrypted.length(); i++) {
+        char currChar = encrypted.charAt(i);
+        
+        char upperCurrChar = Character.toUpperCase(currChar);
+        
+        int idx = alphabetUpper.indexOf(upperCurrChar);
+        //checks to see if value is in the alphabet string
+        if(idx != -1 && i%2 == 0){
+            //then go ahead and select the shifted alphabet character
+             char newChar = shiftAlpha1.charAt(idx);
+             //if the original value is upper case
+             if(Character.isUpperCase(currChar)){
+             
+             //and add it to the encrypted message
+             encrypted.setCharAt(i, newChar);
+                }
+                //if not upper case (therefore lower case)
+             else{
+                 
+             //transform the character selected lowercase
+             char lowerNewChar = Character.toLowerCase(newChar);
+             //add the lower case to the encrypted message
+             encrypted.setCharAt(i, lowerNewChar);
+                }
+            }
+        else if(idx != -1 && i%2 != 0){
+        
+                     char newChar = shiftAlpha2.charAt(idx);
+             //if the original value is upper case
+             if(Character.isUpperCase(currChar)){
+             
+             //and add it to the encrypted message
+             encrypted.setCharAt(i, newChar);
+                }
+                //if not upper case (therefore lower case)
+             else{
+                 
+             //transform the character selected lowercase
+             char lowerNewChar = Character.toLowerCase(newChar);
+             //add the lower case to the encrypted message
+             encrypted.setCharAt(i, lowerNewChar);
+        
+        }
+        }
+        else{
+        
+        encrypted.setCharAt(i, currChar);
+        }
+        
+        
+        
+    }
+    System.out.println(encrypted);
+    return encrypted.toString();
+
+
+}
+ public void testEncryptTwoKeys(){
+    int key1 = 23;
+    int key2 = 17;
+String encrypted = encryptTwoKeys("First Legion", key1, key2);
+System.out.println("key1 is " + key1 + "\n Key2 is"+ key2 +"\n" + encrypted);
+    
+    
+    }
 
 }
