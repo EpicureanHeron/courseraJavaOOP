@@ -5,6 +5,10 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
+
+import edu.duke.*;
+import org.apache.commons.csv.*;
+import java.io.*;
 public class CaesarCipher {
 /*
  *     Write the method encrypt that has two parameters, a String 
@@ -21,6 +25,44 @@ public class CaesarCipher {
  * 
  */
 
+public String encrypt(String input, int key){
+    
+    StringBuilder encrypted = new StringBuilder(input);
+    
+    String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    
+    String shiftAlpha = alphabet.substring(key) + alphabet.substring(0, key);
+    
+    for (int i = 0; i < encrypted.length(); i++) {
+        char currChar = encrypted.charAt(i);
+        
+        char upperCurrChar = Character.toUpperCase(currChar);
+        
+        int idx = alphabet.indexOf(upperCurrChar);
+        
+        if(idx != -1){
+             char newChar = shiftAlpha.charAt(idx);
+             encrypted.setCharAt(i, newChar);
+             
+        
+        }
+        else{
+        
+        encrypted.setCharAt(i, currChar);
+        }
+        
+        
+        
+    }
+    System.out.println(encrypted);
+    return encrypted.toString();
+
+
+}
+
+
+
+
 
 /*
  * Write the void method testCaesar that has no parameters. This method should read a file 
@@ -32,6 +74,14 @@ String message = fr.asString();
 String encrypted = encrypt(message, key);
 System.out.println("key is " + key + "\n" + encrypted);
  */
+public void testEncrypt(){
+FileResource fr = new FileResource();
+String message = fr.asString();
+int key = 23;
+String encrypted = encrypt(message, key);
+System.out.println("key is " + key + "\n" + encrypted);
+}
+
 
 /*
 Modify the encrypt method to be able to handle both uppercase and lowercase letters.

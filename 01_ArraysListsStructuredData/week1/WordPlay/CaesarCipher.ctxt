@@ -1,4 +1,9 @@
 #BlueJ class context
 comment0.target=CaesarCipher
-comment0.text=\r\n\ Write\ a\ description\ of\ CaesarCipher\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-numComments=1
+comment1.params=input\ key
+comment1.target=java.lang.String\ encrypt(java.lang.String,\ int)
+comment1.text=\r\n\ \ \ \ \ Write\ the\ method\ encrypt\ that\ has\ two\ parameters,\ a\ String\ \r\n\ \ \ \ \ named\ input\ and\ an\ int\ named\ key.\ This\ method\ returns\ a\ String\ that\ \r\n\ \ \ \ \ has\ been\ encrypted\ using\ the\ Caesar\ Cipher\ algorithm\ explained\ in\ the\ \r\n\ \ \ \ \ videos.\ Assume\ that\ all\ the\ alphabetic\ characters\ are\ uppercase\ letters.\ \r\n\ \ \ \ \ For\ example,\ the\ call\r\n\r\n\ \ \ \ \ \ \ \ encrypt(\u201CFIRST\ LEGION\ ATTACK\ EAST\ FLANK\!\u201D,\ 23)\r\n\r\n\ \ \ \ should\ return\ the\ string\ \r\n\r\n\ \ \ \ \ \ \ \ \u201CCFOPQ\ IBDFLK\ XQQXZH\ BXPQ\ CIXKH\!\u201D\r\n\ \r\n
+comment2.params=
+comment2.target=void\ testEncrypt()
+comment2.text=\r\n\ Write\ the\ void\ method\ testCaesar\ that\ has\ no\ parameters.\ This\ method\ should\ read\ a\ file\ \r\n\ and\ encrypt\ the\ complete\ file\ using\ \r\n\ the\ Caesar\ Cipher\ algorithm,\ printing\ the\ encrypted\ message.\ You\ may\ want\ to\ include\r\n\ the\ lines\:\r\n\ FileResource\ fr\ \=\ new\ FileResource();\r\nString\ message\ \=\ fr.asString();\r\nString\ encrypted\ \=\ encrypt(message,\ key);\r\nSystem.out.println("key\ is\ "\ +\ key\ +\ "\\n"\ +\ encrypted);\r\n
+numComments=3
