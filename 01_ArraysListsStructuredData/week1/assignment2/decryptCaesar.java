@@ -58,6 +58,16 @@ public class decryptCaesar {
     return dkey;
 }
 
+
+public void testDecrypt(){
+    //Ede's Pickles are very very tastee with a key of 7
+    String message = "Lkl'z Wpjrslz hyl clyf clyf ahzall";
+    
+    int dKey=decrypt(message);
+        
+    System.out.println(message + " has a dkey key of " + dKey);
+}
+
 /*
  * dea for two keys decrypt method. Recall that in using two keys, key1 and key2,
  * key1 was used to encrypt every other character, starting with the first, of the 

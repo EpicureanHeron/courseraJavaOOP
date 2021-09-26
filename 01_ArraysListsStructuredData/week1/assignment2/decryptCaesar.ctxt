@@ -3,4 +3,6 @@ comment0.target=decryptCaesar
 comment1.params=message
 comment1.target=int\ decrypt(java.lang.String)
 comment1.text=\r\n\ You\ should\ start\ by\ writing\ the\ decryption\ method\ explained\ in\ the\ \r\n\ lesson\ that\ decrypts\ a\ message\ that\ was\ encrypted\ with\ one\ key,\ using\ \r\n\ statistical\ letter\ frequencies\ of\ English\ text.\ Then\ you\ will\ add\ code\ \r\n\ to\ be\ able\ to\ decrypt\ a\ message\ that\ was\ encrypted\ with\ two\ keys,\ using\ ideas\ \r\n\ from\ the\ single\ key\ decryption\ method\ and\ the\ encryption\ with\ two\ keys\ method\ from\ \r\n\ the\ program\ you\ wrote\ in\ the\ last\ lesson.\r\n
-numComments=2
+comment2.params=
+comment2.target=void\ testDecrypt()
+numComments=3
