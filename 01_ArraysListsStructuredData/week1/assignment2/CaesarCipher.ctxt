@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=CaesarCipher
+comment1.params=input\ key
+comment1.target=java.lang.String\ encrypt(java.lang.String,\ int)
+comment1.text=\r\n\ \ \ \ \ Write\ the\ method\ encrypt\ that\ has\ two\ parameters,\ a\ String\ \r\n\ \ \ \ \ named\ input\ and\ an\ int\ named\ key.\ This\ method\ returns\ a\ String\ that\ \r\n\ \ \ \ \ has\ been\ encrypted\ using\ the\ Caesar\ Cipher\ algorithm\ explained\ in\ the\ \r\n\ \ \ \ \ videos.\ Assume\ that\ all\ the\ alphabetic\ characters\ are\ uppercase\ letters.\ \r\n\ \ \ \ \ For\ example,\ the\ call\r\n\r\n\ \ \ \ \ \ \ \ encrypt(\u201CFIRST\ LEGION\ ATTACK\ EAST\ FLANK\!\u201D,\ 23)\r\n\r\n\ \ \ \ should\ return\ the\ string\ \r\n\r\n\ \ \ \ \ \ \ \ \u201CCFOPQ\ IBDFLK\ XQQXZH\ BXPQ\ CIXKH\!\u201D\r\n\ \r\n
+comment2.params=
+comment2.target=void\ testEncrypt()
+comment2.text=\r\n\ Write\ the\ void\ method\ testCaesar\ that\ has\ no\ parameters.\ This\ method\ should\ read\ a\ file\ \r\n\ and\ encrypt\ the\ complete\ file\ using\ \r\n\ the\ Caesar\ Cipher\ algorithm,\ printing\ the\ encrypted\ message.\ You\ may\ want\ to\ include\r\n\ the\ lines\:\r\n\ FileResource\ fr\ \=\ new\ FileResource();\r\nString\ message\ \=\ fr.asString();\r\nString\ encrypted\ \=\ encrypt(message,\ key);\r\nSystem.out.println("key\ is\ "\ +\ key\ +\ "\\n"\ +\ encrypted);\r\n
+comment3.params=
+comment3.target=void\ testModifiedEncrypt()
+comment3.text=\r\nModify\ the\ encrypt\ method\ to\ be\ able\ to\ handle\ both\ uppercase\ and\ lowercase\ letters.\r\n\ For\ example,\ encrypt(\u201CFirst\ Legion\u201D,\ 23)\ should\ return\ \u201CCfopq\ Ibdflk\u201D,\ and\ \r\n\ encrypt(\u201CFirst\ Legion\u201D,\ 17)\ should\ return\ \u201CWzijk\ Cvxzfe\u201D.\ \ Be\ sure\ to\ test\ \r\n\ the\ encrypt\ method.\ \ *\ \r\n\ \r\n
+comment4.params=input\ key1\ key2
+comment4.target=java.lang.String\ encryptTwoKeys(java.lang.String,\ int,\ int)
+comment4.text=\r\n\ Write\ the\ method\ encryptTwoKeys\ that\ has\ three\ parameters,\ a\ String\ named\ input,\ \r\n\ and\ two\ integers\ named\ key1\ and\ key2.\ This\ method\ returns\ a\ String\ that\ has\ been\ \r\n\ encrypted\ using\ the\ following\ algorithm.\ Parameter\ key1\ is\ used\ to\ encrypt\ every\r\n\ other\ character\ with\ the\ Caesar\ Cipher\ algorithm,\ starting\ with\ the\ first\ character,\r\n\ and\ key2\ is\ used\ to\ encrypt\ every\ other\ character,\ starting\ with\ the\ second\ character.\ \r\n\ For\ example,\ the\ call\ encryptTwoKeys(\u201CFirst\ Legion\u201D,\ 23,\ 17)\ should\ return\ \u201CCzojq\ Ivdzle\u201D.\r\n\ Note\ the\ \u2018F\u2019\ is\ encrypted\ with\ key\ 23,\ the\ first\ \u2018i\u2019\ \r\n\ with\ 17,\ the\ \u2018r\u2019\ with\ 23,\ and\ the\ \u2018s\u2019\ with\ 17,\ etc.\ Be\ sure\ to\ test\ this\ method.\ \r\n\ \r\n
+comment5.params=
+comment5.target=void\ testEncryptTwoKeys()
+numComments=6
