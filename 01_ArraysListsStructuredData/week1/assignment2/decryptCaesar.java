@@ -122,9 +122,9 @@ public int getKey(String s){
    int[] freqs = countLetters(s);
    int maxIndex = maxIndex(freqs);
    
-    int dkey;
+
        
-        dkey = maxIndex - 4;
+    int dkey = maxIndex - 4;
         
         if (maxIndex < 4) {
             dkey = 26 - (4-maxIndex);
@@ -153,45 +153,29 @@ public int getKey(String s){
  */
 
 public void decryptTwoKeys(String encrypted){
+    System.out.println(encrypted);
     String firstHalf = halfOfString(encrypted, 0);
+    System.out.println(firstHalf);
     String secondHalf = halfOfString(encrypted, 1);
-    
+        System.out.println(secondHalf);
     int firstHalfKey = getKey(firstHalf);
      System.out.println("First key is: " + firstHalfKey);
     int secondHalfKey = getKey(secondHalf);
      System.out.println("Second key is: " + secondHalfKey);
      
-     CaesarCipher cc = new CaesarCipher();
      
-     String messageFirstHalf = cc.encrypt(firstHalf, 26-firstHalfKey);
+    CaesarCipher cc = new CaesarCipher();
     
-    String messageSecondtHalf = cc.encrypt(secondHalf, 26-secondHalfKey);
+    String message = cc.encryptTwoKeys(encrypted, 26-firstHalfKey, 26-secondHalfKey);
     
-    StringBuilder sb = new StringBuilder();
-    int j = 0;
-    int i = 0;
-    for(int k=0; k < encrypted.length(); k++){
-               if(k%2 == 0){
-                 char ch = messageFirstHalf.charAt(j);
-                 sb.insert(k, ch);
-                j += 1;
-                
-                }
-                else{
-                char ch = messageSecondtHalf.charAt(i);
-                sb.insert(k, ch);
-                i += 1;
-                }
-              
-            
-            }
-            
-    System.out.println(sb.toString());
-
+    System.out.println(message);
+   
 }
 
 public void testDecryptTwoKeys(){
-decryptTwoKeys("Top ncmy qkff vi vguv vbg ycpx");
+//decryptTwoKeys("Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu");
+decryptTwoKeys("Akag tjw Xibhr awoa aoee xakex znxag xwko");
+//should be "Eren and Emily have evil eerie green ears"
 
 }
 

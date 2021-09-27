@@ -195,9 +195,9 @@ StringBuilder encrypted = new StringBuilder(input);
 
 }
  public void testEncryptTwoKeys(){
-    int key1 = 23;
-    int key2 = 17;
-String encrypted = encryptTwoKeys("First Legion", key1, key2);
+    int key1 = 24;
+    int key2 = 6;
+String encrypted = encryptTwoKeys("Top ncmy qkff vi vguv vbg ycpx", key1, key2);
 System.out.println("key1 is " + key1 + "\n Key2 is"+ key2 +"\n" + encrypted);
     
     
