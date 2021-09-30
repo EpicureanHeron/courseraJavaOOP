@@ -173,8 +173,9 @@ public void decryptTwoKeys(String encrypted){
 }
 
 public void testDecryptTwoKeys(){
-//decryptTwoKeys("Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu");
-decryptTwoKeys("Akag tjw Xibhr awoa aoee xakex znxag xwko");
+FileResource fr = new FileResource();
+String message = fr.asString();
+decryptTwoKeys(message);
 //should be "Eren and Emily have evil eerie green ears"
 
 }

@@ -88,9 +88,10 @@ String encrypted = encrypt(message, key);
 System.out.println("key is " + key + "\n" + encrypted);
  */
 public void testEncrypt(){
-FileResource fr = new FileResource();
-String message = fr.asString();
-int key = 23;
+//FileResource fr = new FileResource();
+//String message = fr.asString();
+String message = "Can you imagine life WITHOUT the internet AND computers in your pocket?";
+int key = 15;
 String encrypted = encrypt(message, key);
 System.out.println("key is " + key + "\n" + encrypted);
 }
@@ -195,9 +196,9 @@ StringBuilder encrypted = new StringBuilder(input);
 
 }
  public void testEncryptTwoKeys(){
-    int key1 = 24;
-    int key2 = 6;
-String encrypted = encryptTwoKeys("Top ncmy qkff vi vguv vbg ycpx", key1, key2);
+    int key1 = 12;
+    int key2 = 2;
+String encrypted = encryptTwoKeys("Hfs cpwewloj loks cd Hoto kyg Cyy", key1, key2);
 System.out.println("key1 is " + key1 + "\n Key2 is"+ key2 +"\n" + encrypted);
     
     

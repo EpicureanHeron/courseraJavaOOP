@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=CharactersInPlay
+comment1.params=person
+comment1.target=void\ update(java.lang.String)
+comment1.text=\r\n\ Write\ a\ void\ method\ named\ update\ that\ has\ one\ String\ parameter\ named\ person.\ \r\n\ This\ method\ should\ update\ the\ two\ ArrayLists,\ adding\ the\ character\u2019s\ name\ if\ it\ \r\n\ is\ not\ already\ there,\ \r\n\ and\ counting\ this\ line\ as\ one\ speaking\ part\ for\ this\ person.\ \r\n
+comment2.params=
+comment2.target=void\ findAllCharacters()
+comment2.text=\r\n\ Write\ a\ void\ method\ called\ findAllCharacters\ that\ opens\ a\ file,\ and\ reads\ the\ \r\n\ file\ line-by-line.\ For\ each\ line,\ if\ there\ is\ a\ period\ on\ the\ line,\ extract\ the\ \r\n\ possible\ name\ of\ the\ speaking\ part,\ and\ call\ update\ to\ count\ it\ as\ an\ occurrence\r\n\ for\ this\ person.\ \r\n\ Make\ sure\ you\ clear\ the\ appropriate\ instance\ variables\ before\ each\ new\ file.\r\n
+numComments=3

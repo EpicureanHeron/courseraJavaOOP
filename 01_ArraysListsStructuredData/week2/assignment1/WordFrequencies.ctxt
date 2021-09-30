@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=WordFrequencies
+comment1.params=
+comment1.target=WordFrequencies()
+comment1.text=\r\n\ Write\ a\ constructor\ WordFrequencies,\ and\ initialize\ the\ private\ variables.\ \r\n
+comment2.params=
+comment2.target=void\ findUnique()
+comment2.text=\r\n\ Write\ a\ void\ method\ findUnique\ that\ has\ no\ parameters.\ This\ method\ should\ first\ clear\ both\ myWords\ and\ myFreqs,\ \r\n\ using\ the\ .clear()\ method.\ Then\ it\ selects\ a\ file\ and\ then\ iterates\ over\ every\ word\ in\ the\ file,\ putting\ the\ unique\r\n\ words\ found\ into\ myWords.\ For\ each\ word\ in\ the\ kth\ position\ of\ myWords,\ it\ puts\ the\ count\ of\ how\ many\ times\ that\ word\ \r\n\ occurs\ from\ the\ selected\ file\ into\ the\ kth\ position\ of\ myFreqs,\ as\ was\ demonstrated\ in\ the\ lesson.\r\n
+comment3.params=
+comment3.target=void\ test()
+comment3.text=\r\n\ Write\ a\ void\ tester\ method\ that\ has\ no\ parameters.\ This\ method\ should\ call\ findUnique.\ Then\ print\ out\ the\ number\ of\ unique\ words,\ \r\n\ and\ for\ each\ unique\ word,\ print\ the\ frequency\ of\ each\ word\ and\ the\ word,\ as\ was\ demonstrated\ in\ the\ lesson.\r\n
+comment4.params=
+comment4.target=int\ findIndexOfMax()
+comment4.text=\r\n\ Write\ the\ method\ findIndexOfMax\ that\ has\ no\ parameters.\ This\ method\ returns\r\n\ an\ int\ that\ is\ the\ index\ location\ of\ the\ largest\ value\ \r\n\ in\ myFreqs.\ If\ there\ is\ a\ tie,\ then\ return\ the\ first\ such\ value.\r\n
+numComments=5

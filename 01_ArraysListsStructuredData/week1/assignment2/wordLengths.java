@@ -47,7 +47,7 @@ Specifically, you should do the following:
        int arrayLength=counts.length;
      
        for (String s : resource.words()) {
-        
+           
            char firstChar = s.charAt(0);
            char lastChar = s.charAt(s.length() - 1);
            
@@ -116,7 +116,7 @@ Note this file has words that are:
 public void testCountWordLengths(){
     FileResource fr = new FileResource();
 
-    int[] intArray = new int[31];
+    int[] intArray = new int[50];
     countWordLengths(fr, intArray);
 
 }
