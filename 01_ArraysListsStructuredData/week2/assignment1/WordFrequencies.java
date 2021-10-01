@@ -60,6 +60,8 @@ public class WordFrequencies {
             myFreqs.set(index, value + 1);
         }
         }
+        
+        System.out.println("Total unique words: " + myWords.size()); 
     }
     
     
