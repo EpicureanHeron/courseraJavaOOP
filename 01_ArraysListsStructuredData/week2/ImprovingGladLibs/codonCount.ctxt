@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=codonCount
+comment1.params=
+comment1.target=codonCount()
+comment2.params=start\ dna
+comment2.target=void\ buildCodonMap(int,\ java.lang.String)
+comment2.text=\r\n\ Write\ a\ void\ method\ named\ buildCodonMap\ that\ has\ two\ parameters,\ an\ int\ named\r\n\ start\ and\ a\ String\ named\ dna.\ This\ method\ will\ build\ a\ new\ map\ of\ codons\ mapped\r\n\ to\ their\ counts\ from\ the\ string\ dna\ with\ the\ reading\ frame\ with\ the\ position\ start\ \r\n\ (a\ value\ of\ 0,\ 1,\ or\ 2).\r\n\ You\ will\ call\ this\ method\ several\ times,\ so\ make\ sure\ your\ map\ is\ empty\ before\ \r\n\ building\ it.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getMostCommonCodn()
+comment3.text=\r\n\ Write\ a\ method\ named\ getMostCommonCodon\ that\ has\ no\ parameters.\ This\ method\ \r\n\ returns\ a\ String,\ the\ codon\ in\ a\ reading\ frame\ that\ has\ the\ largest\ count.\ If\r\n\ there\ are\ several\ such\ codons,\ return\ any\ one\ of\ them.\ \r\n\ This\ method\ assumes\ the\ HashMap\ of\ codons\ to\ counts\ has\ already\ been\ built.\r\n
+comment4.params=start\ end
+comment4.target=void\ printCodonCounts(int,\ int)
+comment4.text=\r\n\ Write\ a\ void\ method\ named\ printCodonCounts\ that\ has\ two\ int\ parameters,\ start\ and\ \r\n\ end.\ This\ method\ prints\ all\ the\ codons\ \r\n\ in\ the\ HashMap\ along\ with\ their\ counts\ if\ their\ count\ is\ between\ start\ and\ end,\r\n\ inclusive.\r\n\ \r\n
+comment5.params=
+comment5.target=void\ tester()
+comment5.text=\r\n\ Write\ a\ tester\ method\ that\ prompts\ the\ user\ for\ a\ file\ that\ contains\ a\ DNA\ strand\ \r\n\ (could\ be\ upper\ or\ lower\ case\ letters\ in\ the\ file,\ convert\ them\ all\ to\ uppercase,\ \r\n\ since\ case\ should\ not\ matter).\ Then\ for\ each\ of\ the\ three\ possible\ reading\ frames,\ \r\n\ this\ method\ builds\ a\ HashMap\ of\ codons\ to\ their\ number\ of\ occurrences\ in\ the\ DNA\ \r\n\ strand,\ prints\ the\ total\ number\ of\ unique\ codons\ in\ the\ reading\ frame,\ prints\ the\r\n\ most\ common\ codon\ and\ its\ count,\ and\ prints\ the\ codons\ and\ their\ number\ of\ occurrences\ \r\n\ for\ those\r\n\ codons\ whose\ number\ of\ occurrences\ in\ this\ reading\ frame\ are\ between\ two\ numbers\r\n\ inclusive.\r\n
+numComments=6
