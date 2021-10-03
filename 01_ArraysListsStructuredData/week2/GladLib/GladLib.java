@@ -147,7 +147,7 @@ public class GladLib {
         }
         else {
             FileResource resource = new FileResource(source);
-            for(String line : resource.lines()){
+                for(String line : resource.lines()){
                 list.add(line);
             }
         }

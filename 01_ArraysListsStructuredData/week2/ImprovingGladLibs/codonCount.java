@@ -30,7 +30,25 @@ public class codonCount {
     
     
    public void buildCodonMap(int start, String dna){
-    
+       map.clear();
+       for(int k=start; k < dna.length(); k += 3){
+        if(k+3 <= dna.length()){
+            String codon = dna.substring(k, k+3);
+
+            if(map.containsKey(codon)){
+                map.put(codon, map.get(codon) + 1);
+            }
+            
+            else{
+            map.put(codon, 1);
+        }
+        
+        
+        }
+        
+        
+        
+        }
     }
     
     /*
@@ -40,9 +58,22 @@ public class codonCount {
      * This method assumes the HashMap of codons to counts has already been built.
      */
     
-   public String getMostCommonCodn(){
+   public String getMostCommonCodon(){
+    int maxValue = 0;
+    String maxKey = "n/a";
+    System.out.println("Most common");
+    for(String w: map.keySet()){
+        int currValue = map.get(w);
+        
+        if(currValue > maxValue){
+            maxValue = currValue;
+            maxKey = w;
+            
+        }
     
-    return "0";
+    }
+    System.out.println(maxKey + " has a total of " + maxValue + " which is the most common for this iteration");
+    return maxKey;
     }
     
     /*
@@ -53,7 +84,18 @@ public class codonCount {
      * 
      */
    public void printCodonCounts(int start, int end){
-    
+       System.out.println("For the following values start " + start + " and end " + end);
+       System.out.println("There is a total of " + map.size()) ;
+       for(String w : map.keySet()){
+        int value = map.get(w);
+        
+        if(value > start && value < end){
+            System.out.println(w + " has a total of " + value);
+        
+        }
+        
+        
+        }
     } 
     /*
      * Write a tester method that prompts the user for a file that contains a DNA strand 
@@ -67,6 +109,24 @@ public class codonCount {
      * inclusive.
      */
    public void tester(){
+        System.out.println("Starting");
+    FileResource resource = new FileResource();
+    for(String line : resource.lines()){
+        
+        String DNA = line.toUpperCase().trim();
+        System.out.println(DNA);
+        for(int i =0; i < 3; i+= 1){
+            System.out.println("Reading Position " + i + " begins!");
+            buildCodonMap(i, DNA);
+            getMostCommonCodon();
+            printCodonCounts(2,8);
+        }
+
+
+        
+        
+ 
     
     }
+}
 }
