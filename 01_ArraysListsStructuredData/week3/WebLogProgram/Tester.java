@@ -19,10 +19,43 @@ public class Tester
     
     public void testLogAnalyzer() {
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile("short-test_log.txt");
+        la.readFile("weblog1_log");
         la.printAll();
         
         
         
+    }
+    public void testUniqueIP(){
+    LogAnalyzer la = new LogAnalyzer();
+    la.readFile("short-test_log");
+    int uniqueIPCount = la.countUniqueIPs();
+    System.out.println("file has total unique IPs: " + uniqueIPCount);
+    
+    }
+    
+    public void testprintAllHigherThanNum(){
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile("weblog1_log");
+        la.printAllHigherThanNum(400);
+    }
+    
+    public void testuniqueIPVisitsOnDay(){
+        LogAnalyzer la = new LogAnalyzer();
+
+        la.readFile("weblog1_log");
+        
+        ArrayList<String> uniqueIPsOnDay = la.uniqueIPVisitsOnDay("Mar 17");
+        
+        System.out.println("This file has: " + uniqueIPsOnDay.size() + " of unique IPs on the day");
+        
+    }
+    
+    public void testcountUniqueIPsinRange(){
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile("weblog1_log");
+        int total = la.countUniqueIPsinRange(200, 299);
+        System.out.println("file has total unique IPs: " + total);
+    
+    
     }
 }
