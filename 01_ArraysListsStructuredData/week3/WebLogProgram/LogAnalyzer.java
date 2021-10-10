@@ -167,11 +167,48 @@ public class LogAnalyzer
         }
         return maxDate;
     }
-    
+    /*
+     * In the LogAnalyzer class, write the method iPsWithMostVisitsOnDay, 
+     * which has two parameters—the first one is a HashMap<String, 
+     * ArrayList<String>> that uses records and maps days from web logs to 
+     * an ArrayList of IP addresses that occurred on that day,
+     * and the second parameter is a String representing a day in the format “MMM DD” 
+     * described above. This method returns an ArrayList<String> 
+     * of IP addresses that had the most accesses on the given day. For example, if you 
+     * use the file weblog3-short_log, and the parameter
+     * for the day is “Sep 30”, then there are two IP addresses in the ArrayList 
+     * returned: 61.15.121.171 and 177.4.40.87. 
+     * Hint: This method should call another method you have written.
+     */
     public ArrayList<String> iPsWithMostVisitsOnDay(HashMap<String, ArrayList<String>> dayMap, String date){
         ArrayList<String> ipArray= dayMap.get(date);
+        HashMap<String, Integer> ipCounts= new HashMap<String,Integer>();
+        ArrayList<String> maxIPArray = new ArrayList<String>();
         
-        return ipArray;
+         for (String ip : ipArray) {
+              
+             if(!ipCounts.containsKey(ip)){
+                  
+                 
+                  ipCounts.put(ip, 1);
+             }
+             else{
+                ipCounts.put(ip, ipCounts.get(ip) + 1);
+                }
+        
+        
+        }
+        
+        int maxValue = mostNumberVisitsByIP(ipCounts);
+        
+        for(String w: ipCounts.keySet()){
+            if(ipCounts.get(w) == maxValue){
+                maxIPArray.add(w);
+            
+            }
+            
+        }
+        return maxIPArray;
     
     }
 }
