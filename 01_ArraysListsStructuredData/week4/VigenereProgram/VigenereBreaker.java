@@ -46,14 +46,35 @@ public class VigenereBreaker {
             
             int dkey = cc.getKey(encryptedSlice);
             key[i] = dkey;
-        
+           
         }
         
         return key;
     }
+    
+    /*
+     *     
+     *     Create a new FileResource using its default constructor (which displays a dialog for you to select a file to decrypt).
 
+    Use the asString method to read the entire contents of the file into a String.
+
+    Use the tryKeyLength method, which you just wrote, to find the key for the message you read in. For now, you should just pass ‘e’ for mostCommon.
+
+    You should create a new VigenereCipher, passing in the key that tryKeyLength found for you.
+
+    You should use the VigenereCipher’s decrypt method to decrypt the encrypted message.
+
+    Finally, you should print out the decrypted message!
+     */
+    
     public void breakVigenere () {
-        //WRITE YOUR CODE HERE
+       FileResource fr = new FileResource();
+       String encrypted = fr.asString();
+       int[] key = tryKeyLength(encrypted, 5, 'e');
+       
+       VigenereCipher vc = new VigenereCipher(key);
+       String decrypted = vc.decrypt(encrypted);
+       System.out.println(decrypted); 
     }
     
     public void testSliceString(){
@@ -66,13 +87,12 @@ public class VigenereBreaker {
     }
     
     public void testTryKeyLength(){
-    FileResource fr = new FileResource();
-    
-    int[] test = tryKeyLength(fr.toString(), 5, 'e');
-    
-    for(int i = 0; i < test.length; i ++){
-        System.out.println(test[i]); 
-    }
+     FileResource fr = new FileResource();
+        String encrypted = fr.asString();
+        int[] key = tryKeyLength(encrypted, 5, 'e');
+        for (int i=0; i < 5; i++) {
+            System.out.print(key[i] + " ");
+        }
     
     
     }
