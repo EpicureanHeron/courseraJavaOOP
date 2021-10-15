@@ -68,33 +68,116 @@ public class VigenereBreaker {
      */
     
     public void breakVigenere () {
-       FileResource fr = new FileResource();
-       String encrypted = fr.asString();
-       int[] key = tryKeyLength(encrypted, 5, 'e');
-       
+        FileResource fr = new FileResource();
+        HashSet<String> dict = readDictionary(fr);
+        FileResource fr2 = new FileResource();
+        String encrypted = fr2.asString();
+        String decrypted = breakForLanguage(encrypted, dict);
+        
+        System.out.println(decrypted);
+        
+    }
+    /*
+     * In the VigenereBreaker class, write the public method readDictionary, 
+     * which has one parameter—a FileResource fr. This method should first make 
+     * a new HashSet of Strings, then read each line in fr (which should contain exactly 
+     * one word per line), convert that line to lowercase, and put that line into the HashSet 
+     * that you created. The method should then return the HashSet representing the words in a dictionary.
+     * All the dictionary files, including the English dictionary file, are included in the starter program you download.
+     * They are inside the folder called ‘dictionaries’.
+     */
+    
+    public HashSet<String> readDictionary(FileResource fr){
+        HashSet<String> dictionary = new HashSet<String>();
+        
+        for(String line : fr.lines()){
+            String lowerCase = line.toLowerCase();
+            dictionary.add(lowerCase); 
+        }
+        
+        return dictionary;
+    }
+    
+    public void testreadDictionary(){
+        FileResource fr = new FileResource();
+        HashSet<String> dict = readDictionary(fr);
+        
+        dict.forEach(System.out::println);
+    
+    
+    }
+    
+    /*
+     * In the VigenereBreaker class, write the public method countWords, which has two parameters—a String message, 
+     * and a HashSet of Strings dictionary. This method should split the message into words (use .split(“\\W+”), which
+     * returns a String array), iterate over those words, and see how many of them are “real words”—that is, how many
+     * appear in the dictionary. Recall that the words in dictionary are lowercase. This method should return the integer
+     * count of how many valid words it found.
+     */
+    
+    public int countWords(String message, HashSet<String> dictionary){
+        int count = 0;
+        //https://stackoverflow.com/questions/28802445/java-string-split-trouble-using-w-as-non-word-delimiter
+        String[] words = message.split("\\W+");
+        
+        for(String word: words){
+            String lower_word = word.toLowerCase();
+            if (dictionary.contains(lower_word)){
+                count += 1;
+            }
+        
+        }
+        
+        return count;
+    }
+    
+    public void testCountWords(){
+        FileResource fr = new FileResource();
+        HashSet<String> dict = readDictionary(fr);
+        FileResource fr2 = new FileResource();
+        String encrypted = fr2.asString();
+        
+        int count = countWords(encrypted, dict); 
+        System.out.println(count);
+    }
+    
+    /*
+     * In the VigenereBreaker class, write the public method breakForLanguage, which has two 
+     * parameters—a String encrypted, and a HashSet of Strings dictionary. This method should 
+     * try all key lengths from 1 to 100 (use your tryKeyLength method to try one particular key length) 
+     * to obtain the best decryption for each key length in that range. For each key length, your method 
+     * should decrypt the message (using VigenereCipher’s decrypt method as before), and count how many of 
+     * the “words” in it are real words in English, based on the dictionary passed in (use the countWords 
+     * method you just wrote). This method should figure out which decryption gives the largest count of real 
+     * words, and return that String decryption. Note that there is nothing special about 100; we will just give 
+     * you messages with key lengths in the range 1–100. If you did not have this information, you could iterate 
+     * all the way to encrypted.length(). Your program would just take a bit longer to run.
+     */
+    
+    public String breakForLanguage(String encrypted, HashSet<String> dictionary){
+    char mostCommon = 'e';
+    int maxValue = 0;
+    int keyLength = 0;
+
+    for(int i = 1; i <= 100; i+=1){
+       int[] key = tryKeyLength(encrypted, i, mostCommon);
        VigenereCipher vc = new VigenereCipher(key);
        String decrypted = vc.decrypt(encrypted);
-       System.out.println(decrypted); 
-    }
-    
-    public void testSliceString(){
-        String test = sliceString("abcdefghijklm", 0, 3);
-        
-        System.out.println(test);
-        
-        String test2 = sliceString("abcdefghijklm", 1, 5);
-        System.out.println(test2);
-    }
-    
-    public void testTryKeyLength(){
-     FileResource fr = new FileResource();
-        String encrypted = fr.asString();
-        int[] key = tryKeyLength(encrypted, 5, 'e');
-        for (int i=0; i < 5; i++) {
-            System.out.print(key[i] + " ");
+       int wordCount = countWords(decrypted, dictionary);
+       if(wordCount > maxValue){
+         maxValue = wordCount;
+         keyLength = i;
         }
-    
-    
+        
+     
     }
+    int[] bestKey = tryKeyLength(encrypted, keyLength, mostCommon);
+    VigenereCipher vc = new VigenereCipher(bestKey);
+    String decrypted = vc.decrypt(encrypted);
+    System.out.println("key is this long: " + bestKey.length);
+    return decrypted;
+    }
+    
+
     
 }
