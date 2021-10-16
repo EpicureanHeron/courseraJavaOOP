@@ -1,5 +1,7 @@
-import java.util.*;
+ import java.util.*;
 import edu.duke.*;
+import edu.duke.*;
+import java.io.File;
 
 public class VigenereBreaker {
     
@@ -68,15 +70,25 @@ public class VigenereBreaker {
      */
     
     public void breakVigenere () {
-        FileResource fr = new FileResource();
-        HashSet<String> dict = readDictionary(fr);
-        FileResource fr2 = new FileResource();
-        String encrypted = fr2.asString();
-        String decrypted = breakForLanguage(encrypted, dict);
+        HashMap <String, HashSet<String>> langsHash = new HashMap<String, HashSet<String>>();
+        //directory resource
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()) {
+            FileResource file = new FileResource(f);
+            HashSet<String> dict = readDictionary(file);
+            langsHash.put(f.getName(), dict); 
+
+       
         
-        System.out.println(decrypted);
         
     }
+    FileResource fr2 = new FileResource();
+    String encrypted = fr2.asString();
+        
+    String decrypted = breakForAllLangs(encrypted, langsHash);
+        
+   // System.out.println(decrypted);
+}
     /*
      * In the VigenereBreaker class, write the public method readDictionary, 
      * which has one parameter—a FileResource fr. This method should first make 
@@ -154,8 +166,8 @@ public class VigenereBreaker {
      * all the way to encrypted.length(). Your program would just take a bit longer to run.
      */
     
-    public String breakForLanguage(String encrypted, HashSet<String> dictionary){
-    char mostCommon = 'e';
+    public String breakForLanguage(String encrypted, HashSet<String> dictionary, char mostCommon){
+    //char mostCommon = 'e';
     int maxValue = 0;
     int keyLength = 0;
 
@@ -178,6 +190,75 @@ public class VigenereBreaker {
     return decrypted;
     }
     
+    /*
+     * In the VigenereBreaker class, write the public method mostCommonCharIn, which has one parameter—a HashSet 
+     * of Strings dictionary. This method should find out which character, of the letters in the English alphabet, 
+     * appears most often in the words in dictionary. It should return this most commonly occurring character. Remember 
+     * that you can iterate over a HashSet of Strings with a for-each style for loop.
+     */
+    public char mostCommonCharIn(HashSet<String> dictionary){
+        
+        HashMap<Character, Integer> charMap = new HashMap<Character, Integer>(); 
+        
+        for(String word: dictionary){
+            
+            for(int i =0; i < word.length(); i+= 1){
+                char currentChar = word.charAt(i);
+                
+                if(!charMap.containsKey(currentChar)){
+                    charMap.put(currentChar, 1);
+                
+                }
+                else{
+                    charMap.put(currentChar, charMap.get(currentChar) + 1);
+                }
+            }
 
+       
+        }
+        int maxValue = 0;
+        char maxChar = ' '; 
+        
+        for(char c : charMap.keySet()){
+            
+            if(charMap.get(c) > maxValue){
+                maxValue = charMap.get(c);
+                maxChar = c; 
+            
+            }
+        }
+        return maxChar; 
+    }
     
+   /*
+    *   In the VigenereBreaker class, write the public method breakForAllLangs, which has two parameters—a String encrypted, and a HashMap, 
+    *   called languages, mapping a String representing the name of a language to a HashSet of Strings containing the words in that language.
+    *   Try breaking the encryption for each language, and see which gives the best results! Remember that you can iterate over the languages.keySet()
+    *   to get the name of each language, and then you can use .get() to look up the corresponding dictionary for that language. You will want to use the 
+    *   breakForLanguage and countWords methods that you already wrote to do most of the work (it is slightly inefficient to re-count
+    *   the words here, but it is simpler, and the inefficiency is not significant). You will want to print out the decrypted message as well as the language
+    *   that you identified for the message.
+    */
+   public String breakForAllLangs(String encrypted, HashMap<String, HashSet<String>> languages){
+           int maxValue = 0;
+           String maxLang = " ";
+       for(String lang: languages.keySet()){
+           char mostCommonInLang = mostCommonCharIn(languages.get(lang));
+           String decrypted = breakForLanguage(encrypted, languages.get(lang), mostCommonInLang);
+           
+           int totalCount = countWords(decrypted, languages.get(lang));
+           
+           if(totalCount > maxValue){
+            maxValue = totalCount;
+            maxLang = lang;
+            }
+            
+        }
+        char mostCommonInLang = mostCommonCharIn(languages.get(maxLang));
+        String decrypted = breakForLanguage(encrypted, languages.get(maxLang), mostCommonInLang);
+        System.out.println(decrypted);
+        System.out.println(maxLang);
+        
+        return decrypted;
+    }
 }
